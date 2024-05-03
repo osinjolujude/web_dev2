@@ -68,14 +68,14 @@ pipeline{
         //         sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
         //     }
         // }
-        stage('SonarQube analysis1') {
-            steps {
-                // Run SonarQube scanner
-                withSonarQubeEnv('SonarQube_Server') {
-                    sh 'sonar-scanner'
-                }
-            }
-        }
+        // stage('SonarQube analysis1') {
+        //     steps {
+        //         // Run SonarQube scanner
+        //         withSonarQubeEnv('SonarQube_Server') {
+        //             sh 'sonar-scanner'
+        //         }
+        //     }
+        // }
         stage('SonarQube analysis') {
             environment {
                 SONAR_URL = "http://4.154.42.1:9000"
