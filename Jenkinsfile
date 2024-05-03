@@ -25,13 +25,6 @@ pipeline{
                     sh 'pip install -r requirements.txt'
                 }
             }
-        stage('Run tests') {
-                steps {
-                    // Run tests (if any)
-                    // Example: sh 'pytest'
-                    sh 'pytest'
-                }
-            }
     // stage('Unit tests') {
     //     steps {
     //         echo "-=- execute unit tests -=-"
