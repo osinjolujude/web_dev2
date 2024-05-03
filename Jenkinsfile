@@ -13,6 +13,7 @@ pipeline{
                 sh "pip install -r requirements.txt"
             }
         }
+    }
     stages{
         stage('Checkout') {
             steps{
@@ -78,6 +79,7 @@ pipeline{
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
+    }
     stage('Build and deploy') {
         steps {
             // Build and deploy your Python web app
