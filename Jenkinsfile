@@ -85,6 +85,8 @@ pipeline{
                     sh 'pwd'
                     echo 'Mayowa'
                     withSonarQubeEnv('SonarQube_Server') {
+                        echo 'Jude'
+                        sh 'cd sonar-scanner-4.6.2.2472-linux/bin/'
                         sh 'sonar-scanner'
                     }
                 }
