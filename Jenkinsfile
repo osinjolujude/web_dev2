@@ -59,7 +59,7 @@ pipeline{
                 steps {
                     // Run SonarQube scanner
                     withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh 'sonar-scanner'
+                        sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     }
                 }
             }
