@@ -1,10 +1,9 @@
 pipeline{
     agent{
-            any
-        // docker {
-        //     image 'python:3.9'
-        //     args '-u root'
-        // }
+        docker {
+            image 'python:3.9'
+            args '-u root'
+        }
     }
     stages {
         stage('Environment preparation') {
