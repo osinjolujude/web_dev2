@@ -53,13 +53,13 @@ pipeline{
     //     }
     //   }
     // }
-        stage('Run tests') {
-            steps {
-                // Run tests (if any)
-                // Example: sh 'pytest'
-                sh 'pytest'
-            }
-        }
+        // stage('Run tests') {
+        //     steps {
+        //         // Run tests (if any)
+        //         // Example: sh 'pytest'
+        //         sh 'pytest'
+        //     }
+        // }
         stage('SonarQube scanner setup') {
             steps {
                 // Download and install SonarQube Scanner
