@@ -23,7 +23,7 @@ pipeline{
                 steps {
                     // Install dependencies using pip
                     sh 'pip install -r requirements.txt'
-                    sh 'pip install --upgrade pip'
+                    // sh 'pip install --upgrade pip'
                 }
             }
     // stage('Unit tests') {
@@ -83,6 +83,7 @@ pipeline{
                 steps {
                     // Run SonarQube scanner
                     sh 'pwd'
+                    echo 'Mayowa'
                     withSonarQubeEnv([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
                         sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     }
