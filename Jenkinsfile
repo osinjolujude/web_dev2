@@ -84,8 +84,8 @@ pipeline{
                     // Run SonarQube scanner
                     sh 'pwd'
                     echo 'Mayowa'
-                    withSonarQubeEnv([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                    withSonarQubeEnv('SonarQube_Server') {
+                        sh 'sonar-scanner'
                     }
                 }
             }
