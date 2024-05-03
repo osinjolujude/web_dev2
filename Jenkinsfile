@@ -36,12 +36,12 @@ pipeline{
     //         sh 'ls -ltr'
     //     }
     // }
-        stage('Run Docker image') {
-            steps {
-                echo "-=- run Docker image -=-"
-                sh "docker run --name python-jenkins-pipeline --detach --rm --network ci -p 5001:5000 restalion/python-jenkins-pipeline:0.1"
-            }
-        }
+        // stage('Run Docker image') {
+        //     steps {
+        //         echo "-=- run Docker image -=-"
+        //         sh "docker run --name soccer_blog-pipeline --detach --rm --network ci -p 5001:5000 restalion/python-jenkins-pipeline:0.1"
+        //     }
+        // }
     // stage('Static Code Analysis') {
     //   environment {
     //     SONAR_URL = "http://52.148.143.190:9000"
