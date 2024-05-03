@@ -60,8 +60,6 @@ pipeline{
                 steps {
                     // Run SonarQube scanner
                     sh 'pwd'
-                    sh "ls ${scannerHome}"
-                    sh "echo ${scannerHome}"
                     withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
                         sh '/home/adminuser/sonarqube-9.9.0.65466/bin/sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     }
