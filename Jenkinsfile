@@ -20,7 +20,6 @@ pipeline{
                 checkout scm
             }
         }
-    }
         stage('Install dependencies') {
                 steps {
                     // Install dependencies using pip
@@ -86,4 +85,4 @@ pipeline{
                 sh 'python main.py migrate && python main.py runserver'
             }
         }
-    }
+}
