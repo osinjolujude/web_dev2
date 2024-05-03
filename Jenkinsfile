@@ -68,7 +68,7 @@ pipeline{
                 sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
             }
         }
-        stage('SonarQube analysis') {
+        stage('SonarQube analysis1') {
             steps {
                 // Run SonarQube scanner
                 withSonarQubeEnv('SonarQube_Server') {
