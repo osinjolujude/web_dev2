@@ -88,22 +88,3 @@ pipeline{
         }
     }
 }
-    // stage('Update Deployment File') {
-    //     environment {
-    //         GIT_REPO_NAME = "web_dev"
-    //         GIT_USER_NAME = "osinjolujude"
-    //     }
-    //     steps {
-    //         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-    //             sh '''
-    //                 git config user.email "tokunbo.dina@gmail.com"
-    //                 git config user.name "Tokunbo Dina"
-    //                 BUILD_NUMBER=${BUILD_NUMBER}
-    //                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-    //                 git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-    //                 git commit -a -m "Update deployment image to version ${BUILD_NUMBER}"
-    //                 git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-    //             '''
-    //         }
-    //     }
-    // }
