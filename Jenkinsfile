@@ -97,7 +97,7 @@ pipeline{
                     def scannerHome = tool name: 'scanner-name', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('sonar') {
                         sh "echo $pwd"
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner-4.6.2.2472-linux"
                     }
                 }
             }
