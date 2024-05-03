@@ -13,7 +13,6 @@ pipeline{
                 sh "pip install -r requirements.txt"
             }
         }
-    }
         stage('Checkout') {
             steps{
                 // git branch: 'main', credentialsId: 'github', url: 'https://github.com/osinjolujude/web_dev.git'
