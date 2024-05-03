@@ -23,6 +23,7 @@ pipeline{
                 steps {
                     // Install dependencies using pip
                     sh 'pip install -r requirements.txt'
+                    sh 'pip install --upgrade pip'
                 }
             }
     // stage('Unit tests') {
@@ -59,7 +60,7 @@ pipeline{
                 steps {
                     // Run SonarQube scanner
                     withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                        sh '/home/adminuser/sonarqube-9.9.0.65466/bin/sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     }
                 }
             }
