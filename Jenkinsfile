@@ -53,6 +53,29 @@ pipeline{
     //     }
     //   }
     // }
+        stage('Run tests') {
+            steps {
+                // Run tests (if any)
+                // Example: sh 'pytest'
+                sh 'pytest'
+            }
+        }
+        stage('SonarQube scanner setup') {
+            steps {
+                // Download and install SonarQube Scanner
+                sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
+                sh 'unzip sonar-scanner-cli-4.6.2.2472-linux.zip'
+                sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                // Run SonarQube scanner
+                withSonarQubeEnv('SonarQube_Server') {
+                    sh 'sonar-scanner'
+                }
+            }
+        }
         stage('SonarQube analysis') {
             environment {
                 SONAR_URL = "http://4.154.42.1:9000"
@@ -61,7 +84,7 @@ pipeline{
                     // Run SonarQube scanner
                     sh 'pwd'
                     withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh '/home/adminuser/sonarqube-9.9.0.65466/bin/sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                        sh 'sonar-scanner -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                     }
                 }
             }
