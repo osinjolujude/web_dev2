@@ -85,7 +85,7 @@ pipeline{
                     sh 'pwd'
                     echo 'Mayowa'
                     withSonarQubeEnv('SonarQube_Server') {
-                        sh 'sonar-scanner'
+                        sh 'sonar:sonar'
                     }
                 }
             }
