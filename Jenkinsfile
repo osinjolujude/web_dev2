@@ -60,14 +60,14 @@ pipeline{
         //         sh 'pytest'
         //     }
         // }
-        stage('SonarQube scanner setup') {
-            steps {
-                // Download and install SonarQube Scanner
-                sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
-                sh 'unzip sonar-scanner-cli-4.6.2.2472-linux.zip'
-                sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
-            }
-        }
+        // stage('SonarQube scanner setup') {
+        //     steps {
+        //         // Download and install SonarQube Scanner
+        //         sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
+        //         sh 'unzip sonar-scanner-cli-4.6.2.2472-linux.zip'
+        //         sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
+        //     }
+        // }
         stage('SonarQube analysis1') {
             steps {
                 // Run SonarQube scanner
