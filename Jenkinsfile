@@ -80,29 +80,29 @@ pipeline{
         //     environment {
         //         SONAR_URL = "http://4.154.42.1:9000"
         //     }
-        //         steps {
-        //             // Run SonarQube scanner
-        //             sh 'pwd'
-        //             echo 'Mayowa'
-        //             withSonarQubeEnv('SonarQube_Server') {
-        //                 sh 'sonar:sonar'
-        //             }
-        //         }
-        //     }
-        stage('SonarQube Code Analysis') {
-            steps {
-                dir("${WORKSPACE}"){
-                // Run SonarQube analysis for Python
-                script {
-                    def scannerHome = tool name: 'scanner-name', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    withSonarQubeEnv('sonar') {
-                        sh "echo $pwd"
-                        sh "${scannerHome}/bin/sonar-scanner-4.6.2.2472-linux"
+                steps {
+                    // Run SonarQube scanner
+                    sh 'pwd'
+                    echo 'Mayowa'
+                    withSonarQubeEnv('SonarQube_Server') {
+                        sh 'sonar-scanner-4.6.2.2472-linux'
                     }
                 }
             }
-            }
-       }
+    //     stage('SonarQube Code Analysis') {
+    //         steps {
+    //             dir("${WORKSPACE}"){
+    //             // Run SonarQube analysis for Python
+    //             script {
+    //                 def scannerHome = tool name: 'scanner-name', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+    //                 withSonarQubeEnv('sonar') {
+    //                     sh "echo $pwd"
+    //                     sh "${scannerHome}/bin/sonar-scanner-4.6.2.2472-linux"
+    //                 }
+    //             }
+    //         }
+    //         }
+    //    }
         stage('Build and Push Docker Image') {
         environment {
             DOCKER_IMAGE = "mayowa88/soccer_blog:${BUILD_NUMBER}"
