@@ -3,12 +3,6 @@ pipeline{
         docker {
             image 'nginx:latest'
             args '-u root'
-            args 'echo $0'
-            args 'bash apt update'
-            args 'apt install python -y'
-            args 'apt install docker -y'
-            args 'python3 --version'
-            args "echo Installation packages complete"
         }
     }
     stages {
@@ -28,6 +22,12 @@ pipeline{
         stage('Install dependencies') {
                 steps {
                     // Install dependencies using pip
+                    echo $0
+                    bash 'apt update'
+                    bash 'apt install python -y'
+                    bash 'apt install docker -y'
+                    bash 'python3 --version'
+                    echo "Installation packages complete"
                     sh 'pip install -r requirements.txt'
                     // sh 'pip install --upgrade pip'
                 }
