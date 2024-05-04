@@ -1,7 +1,7 @@
 pipeline{
     agent{
         docker {
-            image 'python:3.9'
+            image 'nginx:latest'
             args '-u root'
         }
     }
@@ -11,6 +11,11 @@ pipeline{
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
                 sh "pip install -r requirements.txt"
+                sh 'apt update'
+                sh 'apt install python -y'
+                sh 'apt install docker -y'
+                sh 'python3 --version'
+                echo "Installation packages complete"
             }
         }
         stage('Checkout') {
