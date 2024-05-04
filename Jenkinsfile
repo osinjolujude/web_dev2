@@ -12,7 +12,6 @@ pipeline{
                 // Python dependencies
                 sh "pip install -r requirements.txt"
                 sh 'apt update'
-                echo '$0'
                 bash 'apt update'
                 bash 'apt install python -y'
                 bash 'apt install docker.io -y'
