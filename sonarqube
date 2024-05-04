@@ -1,0 +1,5 @@
+sonar-scanner \
+  -Dsonar.projectKey=soccer_blog \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.token=sqp_b6223719607930267d4a4412005c084aeb3bc23f

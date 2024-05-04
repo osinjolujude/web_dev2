@@ -76,21 +76,32 @@ pipeline{
         //         }
         //     }
         // }
-        stage('SonarQube analysis') {
-            environment {
-                SONAR_URL = "http://4.154.42.1:9000"
-            }
-                steps {
-                    // Run SonarQube scanner
-                    sh 'pwd'
-                    echo 'Mayowa'
-                    sh 'cd sonar-scanner-4.6.2.2472-linux/bin/'
-                    withSonarQubeEnv('SonarQube_Server') {
-                        echo 'Jude'
-                        sh 'sonar-scanner'
-                    }
-                }
-            }
+        // stage('SonarQube analysis') {
+        //     environment {
+        //         SONAR_URL = "http://4.154.42.1:9000"
+        //     }
+        //         steps {
+        //             // Run SonarQube scanner
+        //             sh 'pwd'
+        //             echo 'Mayowa'
+        //             sh 'cd sonar-scanner-4.6.2.2472-linux/bin/'
+        //             withSonarQubeEnv('SonarQube_Server') {
+        //                 echo 'Jude'
+        //                 sh 'sonar-scanner'
+        //             }
+        //         }
+        //     }
+
+            // stage('SCM') {
+            //     git 'https://github.com/foo/bar.git'
+            // }
+            // stage('SonarQube analysis') {
+            //     def scannerHome = tool '<sonarqubeScannerInstallation>'; // must match the name of an actual scanner installation directory on your Jenkins build agent
+            //     withSonarQubeEnv('<sonarqubeInstallation>') { // If you have configured more than one global server connection, you can specify its name as configured in Jenkins
+            //     sh "${scannerHome}/bin/sonar-scanner"
+            //     }
+            // }
+            // }
         stage('Build and Push Docker Image') {
         environment {
             DOCKER_IMAGE = "mayowa88/soccer_blog:${BUILD_NUMBER}"
