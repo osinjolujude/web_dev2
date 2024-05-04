@@ -11,7 +11,7 @@ pipeline{
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
                 sh "pip install -r requirements.txt"
-                sh 'apt-update'
+                sh 'apt update'
                 echo '$0'
                 bash 'apt update'
                 bash 'apt install python -y'
