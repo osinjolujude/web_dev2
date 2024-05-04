@@ -10,7 +10,13 @@ pipeline{
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "pip install -r requirements.txt"
+                // sh "pip install -r requirements.txt"
+                echo $0
+                bash 'apt update'
+                bash 'apt install python -y'
+                bash 'apt install docker -y'
+                bash 'python3 --version'
+                echo "Installation packages complete"
             }
         }
         stage('Checkout') {
@@ -22,12 +28,6 @@ pipeline{
         stage('Install dependencies') {
                 steps {
                     // Install dependencies using pip
-                    echo $0
-                    bash 'apt update'
-                    bash 'apt install python -y'
-                    bash 'apt install docker -y'
-                    bash 'python3 --version'
-                    echo "Installation packages complete"
                     sh 'pip install -r requirements.txt'
                     // sh 'pip install --upgrade pip'
                 }
