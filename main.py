@@ -273,5 +273,5 @@ def contact():
     return render_template("contact.html", logged_in=current_user.is_authenticated)
 
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5002)
+# if __name__ == "__main__":
+    # app.run(debug=True, port=5002)

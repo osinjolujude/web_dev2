@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: soccer-blog
+  name: soccer-blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: soccer-blog
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: soccer-blog
+    spec:
+      containers:
+      - image: mayowa88/soccer_blog:69
+        name: soccer-blog-nd49b
+        ports:
+        - containerPort: 5002
+        resources: {}
+status: {}
