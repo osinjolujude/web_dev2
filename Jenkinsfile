@@ -2,7 +2,7 @@ pipeline{
     agent{
         docker {
             image 'python:3.9'
-            args '-u root'
+            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
@@ -11,6 +11,13 @@ pipeline{
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
                 sh "pip install -r requirements.txt"
+                sh 'apt-update'
+                echo '$0'
+                bash 'apt update'
+                bash 'apt install python -y'
+                bash 'apt install docker.io -y'
+                bash 'python3 --version'
+                echo "Installation packages complete"
             }
         }
         stage('Checkout') {
