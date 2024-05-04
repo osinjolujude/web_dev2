@@ -3,10 +3,10 @@ pipeline{
         docker {
             image 'nginx:latest'
             args '-u root'
-            sh 'apt update'
-            sh 'apt install python -y'
-            sh 'apt install docker -y'
-            sh 'python3 --version'
+            bash 'apt update'
+            bash 'apt install python -y'
+            bash 'apt install docker -y'
+            bash 'python3 --version'
             echo "Installation packages complete"
         }
     }
