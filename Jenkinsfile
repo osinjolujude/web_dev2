@@ -5,10 +5,10 @@ pipeline{
             args '-u root'
             args 'echo $0'
             args 'bash apt update'
-            bash 'apt install python -y'
-            bash 'apt install docker -y'
-            bash 'python3 --version'
-            echo "Installation packages complete"
+            args 'apt install python -y'
+            args 'apt install docker -y'
+            args 'python3 --version'
+            args "echo Installation packages complete"
         }
     }
     stages {
