@@ -1,7 +1,7 @@
 pipeline{
     agent{
         docker {
-            image 'alpine'
+            image 'python:3.9'
             args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
@@ -12,8 +12,8 @@ pipeline{
                 // Python dependencies
                 // sh "pip install -r requirements.txt"
                 sh 'apt update'
-                sh 'echo $0'
-                sh 'apt install python3-pip -y'
+                // sh 'echo $0'
+                sh 'apt install python3 -y'
                 sh 'apt install docker.io -y'
                 sh 'python3 --version'
                 sh 'docker -v'
