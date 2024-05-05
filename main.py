@@ -87,8 +87,8 @@ class User(db.Model, UserMixin):
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(100))
     name: Mapped[str] = mapped_column(String(100))
-    posts: Mapped[list[BlogPost]] = relationship('BlogPost', back_populates='author')
-    comments: Mapped[list[BlogPost]] = relationship('Comment', back_populates='comment_author')
+    posts = relationship('BlogPost', back_populates='author')
+    comments = relationship('Comment', back_populates='comment_author')
 
 
 with app.app_context():
@@ -273,5 +273,5 @@ def contact():
     return render_template("contact.html", logged_in=current_user.is_authenticated)
 
 
-# if __name__ == "__main__":
-    # app.run(debug=True, port=5002)
+if __name__ == "__main__":
+    app.run(debug=True, port=5002)

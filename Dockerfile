@@ -1,20 +1,25 @@
-# Use the official Python image from Docker Hub
-FROM python:3.8-slim
+FROM python:3.10-slim
 
-# Set the working directory in the container
+VOLUME [ "/var/run/docker.sock:/var/run/docker.sock" ]
+RUN apt update 
+# RUN apt install python3-pip -y
+RUN apt install docker.io -y
+
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port 5002 to the outside world
 EXPOSE 5002
 
 # Define environment variable
-ENV FLASK_APP=app.py
+ENV FLASK_APP=main.py
+ENV SECRET_KEY=8BYkEfBA6O6donzWlSihBXox7C0sKR6b 
 
 # Run the application when the container launches
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5002"]
+
+
+# CMD [ "Python3", "main.py", "--host=0.0.0.0" ]

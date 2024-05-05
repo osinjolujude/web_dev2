@@ -10,10 +10,10 @@ pipeline{
             steps {
                 echo "-=- preparing project environment -=-"
                 // Python dependencies
-                sh "pip install -r requirements.txt"
+                // sh "pip install -r requirements.txt"
                 sh 'apt update'
                 sh 'echo $0'
-                sh 'apt install python3 -y'
+                sh 'apt install python3-pip -y'
                 sh 'apt install docker.io -y'
                 sh 'python3 --version'
                 sh 'docker -v'
