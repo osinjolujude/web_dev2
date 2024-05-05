@@ -15,8 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5002
 
 # Define environment variable
-ENV FLASK_APP=main.py
-ENV SECRET_KEY=8BYkEfBA6O6donzWlSihBXox7C0sKR6b 
+# ENV FLASK_APP=main.py
 
 # Run the application when the container launches
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5002"]

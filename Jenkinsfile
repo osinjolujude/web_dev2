@@ -125,12 +125,31 @@ pipeline{
             }
         }
     }
-        stage('Build and deploy') {
-            steps {
-                // Build and deploy your Python web app
-                // Example: sh 'python manage.py migrate && python manage.py runserver'
-                sh 'python main.py migrate && python main.py runserver'
+        // stage('Build and deploy') {
+        //     steps {
+        //         // Build and deploy your Python web app
+        //         // Example: sh 'python manage.py migrate && python manage.py runserver'
+        //         sh 'python main.py migrate && python main.py runserver'
+        //     }
+        // }
+        stage('Update Deployment File') {
+        environment {
+            GIT_REPO_NAME = "web_dev"
+            GIT_USER_NAME = "osinjolujude"
+        }
+        steps {
+            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                sh '''
+                    git config user.email "tokunbo.dina@gmail.com"
+                    git config user.name "Tokunbo Dina"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" kubernetes/deployment.yaml
+                    git add kubernetes/deployment.yaml
+                    git commit -a -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
             }
         }
     }
+  }
 }
