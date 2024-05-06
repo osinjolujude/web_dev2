@@ -86,11 +86,10 @@ pipeline{
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube_Server') {
-                    sh 'sonar-scanner -Dsonar.login='sonarqube' -Dsonar.url=http://52.148.143.190:9000/'
+                    sh "sonar-scanner -Dsonar.login='sonarqube' -Dsonar.url=http://52.148.143.190:9000/"
                 }
             }
         }
-        
         // stage('SonarQube analysis1') {
         //     steps {
         //         // Run SonarQube scanner
