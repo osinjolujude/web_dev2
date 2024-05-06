@@ -68,13 +68,29 @@ pipeline{
         //     }
         // }
         // stage('SonarQube scanner setup') {
-        //     steps {
-        //         // Download and install SonarQube Scanner
-        //         sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
-        //         sh 'unzip sonar-scanner-cli-4.6.2.2472-linux.zip'
-        //         sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
+        //     environment {
+        //         SONAR_URL = "http://4.154.42.1:9000"
+        //         SCANNER_HOME = tool 'sonar-scanner'
         //     }
-        // }
+            // steps {
+            //     // Download and install SonarQube Scanner
+            //     sh """ $SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://52.148.143.190:9000/ -Dsonar.login='sonar' -Dsonar.projectName=Soccer_Blog \
+            //     """
+
+
+            //     sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
+            //     sh 'unzip sonar-scanner-cli-4.6.2.2472-linux.zip'
+            //     sh 'export PATH=$PATH:/path/to/sonar-scanner/bin' // Adjust the path to the SonarQube Scanner bin directory
+            // }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube_Server') {
+                    sh 'sonar-scanner -Dsonar.login='sonarqube' -Dsonar.url=http://52.148.143.190:9000/'
+                }
+            }
+        }
+        
         // stage('SonarQube analysis1') {
         //     steps {
         //         // Run SonarQube scanner
