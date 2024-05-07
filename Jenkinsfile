@@ -34,7 +34,7 @@ pipeline{
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('my-scanner') {
-                    sh "/var/lib/jenkins/workspace/soccer_demo@tmp/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.projectKey=develop -Dsonar.sources=."
+                    sh "/var/lib/jenkins/workspace/soccer_demo@tmp/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.projectKey=Soccer_Blog -Dsonar.sources=."
                 }
             }
         }
@@ -53,7 +53,14 @@ pipeline{
                 }
             }
         }
-    }
+        }
+        stage('Build and deploy') {
+            steps {
+                // Build and deploy your Python web app
+                // Example: sh 'python manage.py migrate && python manage.py runserver'
+                sh 'python main.py migrate && python main.py runserver'
+            }
+        }
         stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "web_dev"
