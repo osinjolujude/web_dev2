@@ -54,13 +54,13 @@ pipeline{
             }
         }
         }
-        stage('Build and deploy') {
-            steps {
-                // Build and deploy your Python web app
-                // Example: sh 'python manage.py migrate && python manage.py runserver'
-                sh 'python main.py migrate && python main.py runserver'
-            }
-        }
+        // stage('Build and deploy') {
+        //     steps {
+        //         // Build and deploy your Python web app
+        //         // Example: sh 'python manage.py migrate && python manage.py runserver'
+        //         sh 'python main.py migrate && python main.py runserver'
+        //     }
+        // }
         stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "web_dev"
@@ -69,6 +69,9 @@ pipeline{
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
+                    pwd
+                    git config --global --add safe.directory /var/lib/jenkins/workspace/soccer_demo
+                    git status
                     git config user.email "osinjolumayowa@gmail.com"
                     git config user.name "mayowa osinjolu"
                     BUILD_NUMBER=${BUILD_NUMBER}
